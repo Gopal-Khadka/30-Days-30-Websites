@@ -19,6 +19,7 @@
 
 .navbar a:hover {
     color: #a8dadc;
+    list-style: none;
 }
 
 .info-card {
@@ -28,7 +29,7 @@
     padding: 5px;
     background-color: #0EA293;
     border-radius: 15px;
-   
+
 }
 
 
@@ -44,7 +45,8 @@
     text-align: center;
     color: #FFE5CA;
 }
-.info-card p span{
+
+.info-card p span {
     color: #C9EEFF;
 }
 
@@ -103,6 +105,9 @@ body {
 }
 
 .contact-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     padding: 8px 12px;
     background-color: #03C988;
     border: none;
@@ -113,6 +118,12 @@ body {
 .contact-btn a {
     text-decoration: none;
     color: white;
+    margin-left: 3px;
+}
+
+.contact-btn img {
+    width: 38px;
+    height: auto;
 }
 
 .contact-btn:hover {
