@@ -1,15 +1,19 @@
 .navbar {
     background-color: #263849;
-    padding: 20px;
+    padding: 5px;
     display: flex;
-    flex-direction: row-reverse;
-    flex-wrap: wrap;
     justify-content: space-between;
-    border-radius: 20px;
+    align-items: center;
+    border-radius: 15px;
 
 }
+.navbar-items {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+}
 
-.navbar a {
+.navbar-items a {
     text-decoration: none;
     color: #669bbc;
     margin: 20px;
@@ -17,9 +21,13 @@
 
 }
 
-.navbar a:hover {
+.navbar-items a:hover {
     color: #a8dadc;
     list-style: none;
+}
+.navbar-logo img{
+    width: 32px;
+    height: auto;
 }
 
 .info-card {
