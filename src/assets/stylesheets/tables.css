@@ -1,0 +1,42 @@
+.table {
+    display: table;
+    background-color: antiquewhite;
+    margin: 5% auto;
+}
+
+.table-row {
+    display: table-row;
+}
+
+.table-row:nth-child(odd) {
+    background-color: khaki;
+}
+
+.table-cell {
+    display: table-cell;
+    padding: 10px;
+    border: 2px solid darkslategrey;
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center;
+}
+
+.table-heading {
+    display: table-header-group;
+    color: coral;
+}
+
+.table-heading .table-cell {
+    font: bolder 40px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.table-caption {
+    display: table-caption;
+    text-align: center;
+    font: 30px bolder;
+    font-variant: small-caps;
+}
+
+body {
+    background-color: floralwhite;
+}

@@ -1,0 +1,97 @@
+.navbar {
+    background-color: #263849;
+    padding: 20px;
+    display: flex;
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    border-radius: 8px;
+
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #669bbc;
+    margin: 20px;
+    font-size: 22px;
+
+}
+
+.navbar a:hover {
+    color: #a8dadc;
+}
+
+body {
+    background-color: #41506b;
+}
+
+.font-20 {
+    font-size: 20px;
+}
+
+.title {
+    color: #a8dadc;
+
+    font-size: 35px;
+    text-align: center;
+}
+
+.title:hover {
+    opacity: 0.9;
+}
+
+.text {
+    color: #90f6d7;
+    margin: auto;
+    width: 80%;
+    padding: 5px 0;
+}
+
+.hr-dot {
+    margin: 15px auto;
+    width: 10%;
+    border: none;
+    border-top: 10px dotted #669bbc;
+}
+
+.hr-line {
+    width: 80%;
+    margin: auto;
+}
+
+.contact-me {
+    width: 80%;
+    margin: 30px auto;
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    flex-wrap: wrap;
+}
+
+.contact-btn {
+    padding: 8px 12px;
+    background-color: #03C988;
+    border: none;
+    border-radius: 8px;
+    margin: 7px 2px 2px 7px;
+}
+
+.contact-btn a {
+    text-decoration: none;
+    color: white;
+}
+
+.contact-btn:hover {
+    opacity: 0.9;
+}
+.footer{
+    text-align: center;
+    margin-top: 15px;
+}
+.footer a{
+text-decoration: none;
+color: azure;
+}
+.footer a:hover{
+    color: lightsalmon;
+}

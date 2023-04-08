@@ -1,0 +1,64 @@
+.container {
+    margin: auto;
+    width: 60%;
+    padding: 20px;
+}
+
+.center {
+    text-align: center;
+
+}
+
+.text-color {
+    color: #3c1642;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.mainContainer {
+    background-color: #335c67;
+}
+
+.font-20 {
+    font-size: 20px;
+}
+
+.font-30 {
+    font-size: 30px;
+}
+
+a {
+    color: dodgerblue;
+}
+a:hover{
+    text-decoration: none;
+}
+
+.registerbtn {
+    background-color: #04AA6D;
+    color: white;
+    width: 80%;
+    padding: 16px 20px;
+    border: none;
+}
+
+.registerbtn:hover {
+    opacity: 0.9;
+}
+
+.inputFormat {
+    width: 80%;
+    margin: 5px 0 5px;
+    display: block;
+    padding: 15px;
+    border: none;
+    background: #f1f1f1;
+    font-size: 17px;
+}
+
+.inputFormat:focus {
+    outline: none;
+    background: #ddd;
+}
