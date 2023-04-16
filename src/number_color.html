@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Color Representation</title>
+    <link rel="shortcut icon" href="assets/images/color_logo.png" type="image/x-icon">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            width: 100%;
+            line-height: 1.5;
+            background-color: bisque;
+        }
+
+        .container {
+            width: 80%;
+            margin: 20px auto;
+        }
+
+        h3 {
+            text-align: center;
+            font: 25px bold;
+            color: indianred;
+        }
+
+        .inputBox {
+            width: 40%;
+            margin: 25px auto 10px;
+        }
+
+        .inputBox input {
+            padding: 3px;
+            border: none;
+        }
+
+        .inputBox input:focus {
+            outline: none;
+            background-color: #ddd;
+
+        }
+
+        .fs-15 {
+            font-size: 15px;
+        }
+
+        .generateBtn {
+            background-color: #04AA6D;
+            color: white;
+            border: none;
+            padding: 3px;
+            border-radius: 3px;
+        }
+
+        #boxArea {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        #boxArea div {
+            display: flex;
+        }
+
+        #boxArea div div {
+            width: 8%;
+            height: 80px;
+            border: 1px black solid;
+        }
+
+        .bg-red {
+            background-color: #FF5645;
+        }
+
+        .bg-yellow {
+            background-color: #F6FA69;
+        }
+
+        .bg-green {
+            background-color: #18FA82;
+        }
+
+        #boxArea div div span {
+            font-size: 30px;
+            font-weight: bold;
+            margin: auto;
+            color: #151A16;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h3>Number Generator</h3>
+        <div class="inputBox">
+            <p id="errorLabel"></p>
+            <input type="text" placeholder="Enter value in number" id="numberInput" class="fs-15" required>
+            <button onclick="checkNums()" class="fs-15 generateBtn">Generate Numbers</button>
+            <p id="colorInfo"></p>
+        </div>
+        <div id="boxArea">
+
+        </div>
+    </div>
+    <script>
+        const num = document.getElementById("numberInput")
+        const errLabel = document.getElementById("errorLabel")
+        const regex = new RegExp(/[^0-9]/, 'g')
+        const boxArea = document.getElementById("boxArea")
+        const colorInfo = document.getElementById("colorInfo")
+        const checkNums = () => {
+
+            if (num.value.match(regex)) {
+
+                errLabel.style.color = 'red'
+                errLabel.innerText = `Input value must be a number!`
+                setTimeout(() => {
+                    errLabel.textContent = ''
+                }, 1000)
+            }
+            else {
+                colorInfo.innerText = 'Note: Yellow (prime), Green(Odd), Red (Even)'
+                generateNums(Number(num.value))
+            }
+        }
+        const generateNums = (last) => {
+            let nums_list = []
+            for (let index = 1; index <= last; index++) {
+                nums_list.push(index)
+
+            }
+            separateNums(nums_list)
+
+
+        }
+        const primeNums = (last = Number(num.value)) => {
+            let prime = [2]
+            let flag = 0;
+            let str = '2 '
+            for (let i = 3; i <= last; i++) {
+                for (let j = 2; j <= Math.floor(i / 2) + 1; j++) {
+                    if (i % j == 0) {
+                        flag = 0; break;
+                    }
+                    flag = 1;
+                }
+                if (flag == 1) {
+                    prime.push(i)
+                }
+            }
+            return prime
+        }
+        const separateNums = (nums_list) => {
+            const primes = primeNums()
+            const div_start = '<div>'
+            const div_end = '</div>'
+            const len = nums_list.length
+            let flag = false
+            let count = 0
+            let rows = Math.floor(len / 10)
+            let cols = 10
+            let element_str = ''
+
+            if (rows < (len / 10) && rows != (len / 10)) { rows += 1; flag = true }
+
+            for (i = 1; i <= rows; i++) {
+                element_str += `${div_start}`
+                if (i == rows && flag) { cols = len % 10 }
+                for (j = 1; j <= cols; j++) {
+                    const product = nums_list[count]
+
+                    if (primes.includes(product)) {
+                        element_str += '<div class="bg-yellow">'
+                    }
+                    else if (product % 2 == 0) {
+                        element_str += '<div class="bg-red">'
+                    }
+                    else {
+                        element_str += '<div class="bg-green">'
+                    }
+                    element_str += '<span>' + product + '</span></div> '
+                    count++
+                }
+                element_str += `${div_end}`
+            }
+            boxArea.innerHTML = element_str
+        }
+    </script>
+</body>
+
+</html>
