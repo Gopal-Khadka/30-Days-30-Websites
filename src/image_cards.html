@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expanding Cards</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Mulish:wght@200&display=swap');
+
+        * {
+            box-sizing: border-box;
+
+        }
+
+        body {
+            font-family: Mulish, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            margin: 0;
+        }
+
+        .container {
+            display: flex;
+            width: 90vw;
+        }
+
+        .panel {
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            height: 80vh;
+            border-radius: 50px;
+            color: #ffffff;
+            flex: 0.5;
+            cursor: pointer;
+            position: relative;
+            margin: 10px;
+            transition: flex 0.5s ease-in;
+        }
+
+        .panel h3 {
+            font-size: 24px;
+            position: absolute;
+            bottom: 20px;
+            left: 10px;
+            opacity: 0;
+        }
+
+        .panel.active {
+            flex: 5;
+        }
+
+        .panel.active h3 {
+            opacity: 1;
+            transition: opacity 0.3s ease-in 0.3;
+        }
+
+        @media(max-width:480px) {
+            .container {
+                width: 100vw;
+            }
+
+            .panel:nth-of-type(4),
+            .panel:nth-of-type(5) {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="panel active"
+            style="background-image: url('https://images.unsplash.com/photo-1548222606-6c4f581fd09d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8N3x8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60');">
+            <h3>Explore the world</h3>
+        </div>
+        <div class="panel "
+            style="background-image: url('https://images.unsplash.com/photo-1506102383123-c8ef1e872756?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MTB8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60');">
+            <h3>Sunset</h3>
+        </div>
+        <div class="panel "
+            style="background-image: url('https://images.unsplash.com/photo-1548413935-a7d015ff5865?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MTV8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60');">
+            <h3>Dark Forest</h3>
+        </div>
+        <div class="panel "
+            style="background-image: url('https://images.unsplash.com/photo-1549778399-f94fd24d4697?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MTh8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60');">
+            <h3>Bridge Sunset</h3>
+        </div>
+        <div class="panel"
+            style="background-image: url('https://images.unsplash.com/photo-1542396601-dca920ea2807?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MTN8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60');">
+            <h3>Beach Sunset</h3>
+        </div>
+    </div>
+    <script>
+        const panels = document.querySelectorAll(".panel")
+        panels.forEach((panel) => {
+            panel.addEventListener('click', () => {
+                removeActiveClassses()
+                panel.classList.add('active')
+            })
+
+        })
+        const removeActiveClassses = () => {
+            panels.forEach(panel => {
+                panel.classList.remove('active')
+            })
+
+        }
+    </script>
+</body>
+
+</html>
