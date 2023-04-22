@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Rotating NavBar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            overflow-x: hidden;
+            background-color: #333;
+            color: #222;
+            margin: 0;
+        }
+
+        .container {
+            background-color: #fafafa;
+            transform-origin: top left;
+            transition: transform 0.5s linear;
+            width: 100vw;
+            min-height: 100vh;
+            padding: 80px;
+        }
+
+        .container.show-nav {
+            transform: rotate(-20deg);
+        }
+
+        .circle-container {
+            position: fixed;
+            top: -100px;
+            left: -100px;
+        }
+
+        .circle {
+            background-color: #ff7979;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            transition: transform 0.5s linear;
+            position: relative;
+        }
+        .container.show-nav .circle{
+            transform: rotate(-80deg);
+        }
+        .circle button {
+            position: absolute;
+            top: 60%;
+            left: 45%;
+            height: 50px;
+            font-size: 26px;
+            color: white;
+            background: transparent;
+            border: none;
+        }
+
+        button:focus {
+            outline: none;
+        }
+
+        .circle button#open {
+            left: 63%;
+        }
+
+        .circle button#close {
+            top: 70%;
+            transform: rotate(90deg);
+            transform-origin: top left;
+        }
+
+        .container.show-nav+nav li {
+            transform: translateX(0);
+            transition-delay: 0.3s;
+        }
+
+        .content img {
+            max-width: 100%;
+        }
+
+        .content {
+            max-width: 1000px;
+            margin: 50px auto;
+        }
+
+        .content h3 {
+            font-size: 25px;
+        }
+
+        .content small {
+            color: #333;
+            font-style: italic;
+        }
+
+        .content p {
+            line-height: 1.5;
+        }
+
+        nav {
+            position: fixed;
+            bottom: 40px;
+            left: 0;
+            z-index: 100;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding-left: 30px;
+        }
+
+        nav ul li {
+            text-transform: uppercase;
+            margin: 20px 0;
+            color: white;
+            transform: translateX(-100%);
+            transition: transform 0.4s ease-in;
+        }
+
+        nav ul li i {
+            font-size: 20px;
+            margin-right: 10px;
+        }
+
+        nav ul li+li {
+            margin-left: 15px;
+            transform: translateX(-150%);
+
+        }
+
+        nav ul li+li+li {
+            transform: translateX(-200%);
+            margin-left: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="circle-container">
+            <div class="circle">
+                <button id="close"><i class="fa fa-solid fa-times"></i></button>
+                <button id="open"><i class="fa fa-solid fa-bars"></i></i></button>
+            </div>
+        </div>
+        <div class="content">
+            <h3>My Awesome Article</h3>
+            <small>Gopal Khadka</small>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Doloremque ipsa natus in officiis aliquam
+                ut
+                quae aspernatur voluptate. Fugit aliquam at reiciendis ipsum, pariatur et libero autem sunt amet
+                laudantium totam possimus temporibus sit beatae quos! Necessitatibus, aut. Eveniet, harum. Aliquam,
+                ad!
+                Sunt reprehenderit suscipit, quam qui pariatur expedita iste commodi doloribus tempore voluptatem
+                natus
+                dicta ducimus hic omnis nihil fuga repudiandae, et accusamus inventore quibusdam. Ipsa expedita
+                sapiente
+                id quae, enim impedit, eius ullam iste maiores quod non consectetur dolores minima nobis doloremque
+                mollitia sint. Maiores soluta omnis officia, doloribus, qui iure saepe quisquam dolor quia alias
+                adipisci a?</p>
+            <h3>My Dog</h3>
+            <img src="https://plus.unsplash.com/premium_photo-1670513671607-a15caaf818c0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8ZG9nfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+                alt="">
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusamus earum id dolorum ratione esse
+                rerum
+                quibusdam iure sed illo exercitationem, excepturi fugit laborum maiores quae voluptates blanditiis
+                mollitia libero reiciendis sit consectetur. Impedit eum enim dicta fugiat facere optio
+                necessitatibus
+                asperiores id maxime, beatae velit ab dolorem suscipit, sequi explicabo pariatur praesentium quam
+                ullam
+                deserunt nostrum rerum. In nulla numquam magnam dolorum quis rem assumenda nihil blanditiis. Cumque,
+                iste! Totam inventore fugiat voluptas dolorem delectus?</p>
+        </div>
+    </div>
+    <nav>
+        <ul>
+            <li><i class="fa fa-home"></i>Home</li>
+            <li><i class="fa fa-user"></i>About</li>
+            <li><i class="fa fa-envelope"></i>Contact</li>
+        </ul>
+    </nav>
+    <script>
+        const bars = document.getElementById("open")
+        const cross = document.getElementById("close")
+
+        const container=document.getElementsByClassName("container")
+        bars.addEventListener('click', () => {
+            container[0].classList.add('show-nav')
+
+        })
+        cross.addEventListener('click', () => {
+            container[0].classList.remove('show-nav')
+
+        })
+        
+    </script>
+</body>
+
+</html>
