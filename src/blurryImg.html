@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blurry image</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .bg {
+            background: url('https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80') no-repeat center center/cover;
+            position: absolute;
+            top: -30px;
+            left: -30px;
+            height: calc(100vh + 60px);
+            width: calc(100vw + 60px);
+            z-index: -1;
+            filter: blur(0px);
+        }
+
+        .loading-text {
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            color: #fff;
+            font-size: 50px;
+            font-weight: bolder;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg"></div>
+    <div class="loading-text"></div>
+    <script>
+        const loadText = document.querySelector('.loading-text')
+        const bg = document.querySelector('.bg')
+        let load = 0
+        const blurry = () => {
+            load++
+            if (load > 99) { clearInterval(reBlurry) }
+            loadText.innerText = `${load}%`
+            loadText.style.opacity = scale(load, 0, 100, 1, 0.1)
+            bg.style.filter = `blur(${scale(load, 0, 100, 30, 0)}px)`
+        }
+        let reBlurry = setInterval(blurry, 25)
+
+        function scale(number, inMin, inMax, outMin, outMax) {
+            return (number - inMin) * (outMax - outMin) / (inMax - inMin) + outMin;
+        }
+    </script>
+</body>
+
+</html>
