@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Login Form</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: steelblue;
+            overflow: hidden;
+        }
+
+        .container h1 {
+            text-align: center;
+        }
+
+        .container {
+            background-color: rgba(0, 0, 0, 0.3);
+            color: white;
+            height: 60vh;
+            width: 50vw;
+            padding: 20px;
+            border-radius: 10px;
+
+        }
+
+
+        .form-control {
+            position: relative;
+            margin: 30px 0;
+            height: 50px;
+        }
+
+        .form-control label {
+            position: absolute;
+            top: 5px;
+            left: 7px;
+        }
+
+        .form-control label span {
+            display: inline-block;
+            transition: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        .form-control input:focus+label span {
+            color: lightblue;
+            transform: translateY(-30px);
+        }
+
+        input {
+            display: block;
+            padding: 5px 10px;
+            width: 100%;
+            margin: 20px 0;
+            background: transparent;
+            border: 0;
+            border-bottom: 2px solid white;
+            color: white;
+        }
+
+        input:focus,
+        input:valid {
+            outline: none;
+        }
+
+        input::-ms-reveal {
+            filter: invert(100%);
+        }
+
+        .btn {
+            padding: 10px;
+            font-size: 20px;
+            font-weight: bold;
+            border-radius: 5px;
+            background-color: lightblue;
+            color: white;
+            border: 0;
+            width: 100%;
+        }
+
+        .btn:active {
+            transform: scale(0.98);
+        }
+
+        .text {
+            font-size: 19px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .text a {
+            text-decoration: none;
+            color: lightblue;
+        }
+
+        .text a:hover {
+            color: whitesmoke;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Please Login</h1>
+        <form action="#">
+            <div class="form-control">
+                <input type="text" id="email">
+                <label for="email">Email</label>
+            </div>
+            <div class="form-control">
+                <input type="password" id="pwd">
+                <label for="pwd">Password</label>
+            </div>
+            <button class="btn">Login</button>
+            <p class="text">Don't have an account?<a href="#"> Register</a></p>
+        </form>
+    </div>
+    <script>
+        const labels = document.querySelectorAll('.form-control label')
+        labels.forEach(label => {
+            label.innerHTML = label.innerText.split('').map((letter, index) => `<span style="transition-delay:${index * 50}ms">${letter}</span>`).join('')
+        })
+    </script>
+</body>
+
+</html>
