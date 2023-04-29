@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Dad Jokes</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu+Mono">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            height: 100vh;
+            overflow: hidden;
+            background-color: blueviolet;
+        }
+
+        .jokeContainer {
+            width: 500px;
+            max-width: 95%;
+            height: 50%;
+            background-color: white;
+            border-radius: 10px;
+            padding: 10px;
+            text-align: center;
+            position: relative;
+        }
+
+        .jokeContainer h3 {
+            color: grey;
+            letter-spacing: 2px;
+        }
+
+        .joke {
+            letter-spacing: 1px;
+            line-height: 40px;
+            margin: 40px;
+            font-size: 1.3rem;
+            font-family: Ubuntu, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        }
+
+        .nextBtn {
+            position: absolute;
+            left: 40%;
+            bottom: 10%;
+            border: none;
+            font-size: 1rem;
+            background-color: rgb(106, 90, 205);
+            color: white;
+            border-radius: 5px;
+            padding: 10px 15px;
+        }
+
+        .nextBtn:active {
+            transform: scale(0.98);
+        }
+
+        .nextBtn:hover {
+            background-color: rgba(106, 90, 205, 0.9);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="jokeContainer">
+        <h3>Don't Laugh Challenge</h3>
+        <div class="joke" id="joke"></div>
+        <button class="nextBtn">Get Another Joke</button>
+    </div>
+    <script>
+        const jokeBtn = document.querySelector('.nextBtn')
+        const joke = document.getElementById('joke')
+        generateJoke()
+        async function generateJoke() {
+            const config = {
+                headers: {
+                    'Accept': 'application/json'
+                }
+            }
+            const res= await fetch('https://icanhazdadjoke.com/', config)
+            const data=await res.json()
+            joke.innerText=data['joke']
+        }
+        jokeBtn.addEventListener('click', generateJoke)
+    </script>
+</body>
+
+</html>
