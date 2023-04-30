@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Key Codes</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: antiquewhite;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 0;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .mainContainer {
+            max-width: 90%;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .container {
+            /* max-width: 32%; */
+            width: 300px;
+            text-align: center;
+            margin: 0 5px;
+            font-size: 2rem;
+            display: flex;
+            height: 100px;
+            flex-direction: column;
+            justify-content: space-around;
+            border-radius: 8px;
+            background-color: white;
+            position: relative;
+        }
+
+        .container .text {
+            font-size: 1.2rem;
+            opacity: 0.6;
+            text-transform: capitalize;
+            letter-spacing: 1px;
+            position: absolute;
+            top: -30px;
+            left: 20%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="mainContainer">
+        <div class="container">
+            Press any key to start.
+        </div>
+    </div>
+    <script>
+        const mainContainer = document.querySelector('.mainContainer')
+
+        window.addEventListener('keydown', (e) => {
+
+            const code = e.code
+            const key = e.key
+            const keyCode = e.keyCode
+            mainContainer.innerHTML = `
+            <div class="container">
+            <small class="text">event.Key
+            </small>
+            ${key === ' ' ? 'Space' : key}
+        </div>
+        <div class="container">
+            <small class="text">event.Code</small>
+            ${code}
+        </div>
+        <div class="container">
+            <small class="text">event.KeyCode</small>
+            ${keyCode}
+        </div>
+            `
+
+        })
+    </script>
+</body>
+
+</html>
