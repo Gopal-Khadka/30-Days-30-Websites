@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Choice Picker</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            margin: 0;
+            height: 100vh;
+            background-color: antiquewhite;
+        }
+
+        .tags {
+
+            max-width: 70vh;
+
+        }
+
+        @media(max-width:800px) {
+            .tags {
+                width: 70%;
+                margin: 0 auto;
+            }
+        }
+
+        .textArea {
+            width: 60vw;
+            max-width: 400px;
+            height: 150px;
+            padding: 5px 10px;
+            margin-bottom: 20px;
+        }
+
+        .textArea:focus {
+            outline: none;
+        }
+
+        .tag {
+            display: inline-block;
+            margin: 5px;
+            padding: 10px 20px;
+            background-color: #5cec5c;
+            color: white;
+            border-radius: 50px;
+        }
+
+        .tag.highlight {
+            background-color: #272727;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>Enter all choices divided by comma(,)
+        <br>Click Enter after you are done.
+    </h3>
+    <textarea placeholder="Enter the choices here..." id="userInput" class="textArea"></textarea>
+    <div id="tags" class="tags">
+        <!-- <span class="tag highlight">Choice</span>
+        <span class="tag highlight">Choice</span>
+        <span class="tag">Choice</span>
+        <span class="tag">Choice</span>
+        <span class="tag">Choice 3</span>
+        <span class="tag">Choice 3</span>
+        <span class="tag">Choice 3</span> -->
+
+    </div>
+
+
+    <script>
+        const textArea = document.getElementById('userInput')
+        const choices = document.getElementById('tags')
+        textArea.focus()
+        textArea.addEventListener('keyup', (e) => {
+            let input = e.target.value
+            createTags(input)
+            if (e.key === 'Enter') {
+                setTimeout(() => {
+                    e.target.value = ''
+
+                }, 10)
+                randomSelect()
+            }
+        })
+        function createTags(input) {
+            // takes user input and create choices
+            const tags = input.split(',').filter(tag => tag.trim() !== '').map(tag => tag.trim()) // creates list of user input with no spaces 
+            choices.innerText = ''
+            tags.forEach(tag => {
+                // create span elements and add it to div of id tags.
+                const tagEl = document.createElement('span')
+                tagEl.classList.add('tag')
+                tagEl.innerText = tag
+                choices.appendChild(tagEl)
+            })
+        }
+        function randomSelect() {
+            // handles selecting random tag to highlight and unhighlight
+            // finally highlights last random tag
+            const times = 30
+            const interval = setInterval(() => {
+                const randomTag = picktag()
+                highlight(randomTag)
+                setTimeout(() => {
+                    unhighlight(randomTag)
+                }, 100)
+            }, 100)
+            setTimeout(() => {
+                clearInterval(interval)
+                const randomTag = picktag()
+                highlight(randomTag)
+            }, times * 100)
+        }
+        function picktag() {
+            // picks random tag from all tags
+            const tagChoices = document.querySelectorAll('.tag')
+            return tagChoices[Math.floor(Math.random() * tagChoices.length)]
+        }
+        function highlight(tag) {
+            // highlights tag
+            tag.classList.add('highlight')
+        }
+        function unhighlight(tag) {
+            // unhighlights tag
+            tag.classList.remove('highlight')
+        }
+
+    </script>
+</body>
+
+</html>
